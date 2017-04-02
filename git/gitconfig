@@ -2,6 +2,7 @@
 # See the README for examples.
 [color]
   ui = true
+  diff = true
 [color "branch"]
   current = yellow reverse
   local = yellow
@@ -107,21 +108,44 @@
 [push]
   # 'git push' will push the current branch to its tracking branch
   # the usual default is to push all branches
-  default = upstream
+  default = current
 [core]
-  autocrlf = false
-  editor = vim
+  autocrlf = input
+  editor = vim --clean
   excludesfile = ~/.yadr/git/gitignore
+  whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  quotepath = false
+  precomposeUnicode = true
 [advice]
   statusHints = false
 [diff]
   # Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject
   # instead of a/b/c/d as prefixes for patches
   mnemonicprefix = true
-	algorithm = patience
+  algorithm = patience
+  compactionHeuristic = true
 [rerere]
   # Remember my merges
   # http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
   enabled = true
 [include]
   path = .gitconfig.user
+[rebase]
+  autostash = true
+[stash]
+  showPatch = true
+[commit]
+  gpgsign = true
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+[magithub]
+  online = false
+  [magithub "status"]
+  includeStatusHeader = false
+  includePullRequestsSection = false
+  includeIssuesSection = false
+[http]
+  cookiefile = ~/.gitcookies

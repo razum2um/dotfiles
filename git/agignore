@@ -1,0 +1,9 @@
+.*min.js
+__tests__
+build
+coverage
+node_modules
+.*map
+*.log
+*.ignore
+webpack-bundle*js

@@ -71,7 +71,7 @@ alias ze='vim ~/.zshrc'
 # Git Aliases
 alias gs='git status'
 alias gstsh='git stash'
-alias gst='git stash'
+alias gst='git status'
 alias gsp='git stash pop'
 alias gsa='git stash apply'
 alias gsh='git show'
@@ -211,3 +211,16 @@ alias dbmu='spring rake db:migrate:up'
 
 # Homebrew
 alias brewu='brew update && brew upgrade && brew cleanup && brew doctor'
+
+# Emacs
+alias e='emacsclient -n -s $HOME/.emacs.d/server/server'
+
+# Search
+alias ag='ag --path-to-ignore ~/.agignore'
+
+# Docker
+alias docker-clean=' \
+  docker container prune -f ; \
+  docker image prune -f ; \
+  docker network prune -f ; \
+  docker volume prune -f '
