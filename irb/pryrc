@@ -1,5 +1,5 @@
 # === EDITOR ===
-Pry.editor = 'vi'
+#Pry.editor = 'vi'
 
 # == Pry-Nav - Using pry as a debugger ==
 Pry.commands.alias_command 'c', 'continue' rescue nil
@@ -8,7 +8,7 @@ Pry.commands.alias_command 'n', 'next' rescue nil
 
 # === CUSTOM PROMPT ===
 # This prompt shows the ruby version (useful for RVM)
-Pry.prompt = [proc { |obj, nest_level, _| "#{RUBY_VERSION} (#{obj}):#{nest_level} > " }, proc { |obj, nest_level, _| "#{RUBY_VERSION} (#{obj}):#{nest_level} * " }]
+#Pry.prompt = [proc { |obj, nest_level, _| "#{RUBY_VERSION} (#{obj}):#{nest_level} > " }, proc { |obj, nest_level, _| "#{RUBY_VERSION} (#{obj}):#{nest_level} * " }]
 
 # === Listing config ===
 # Better colors - by default the headings for methods are too 
@@ -25,10 +25,10 @@ Pry.config.ls.private_method_color = :bright_black
 # awesome_print gem: great syntax colorized printing
 # look at ~/.aprc for more settings for awesome_print
 begin
-  require 'awesome_print'
+  #require 'awesome_print'
   # The following line enables awesome_print for all pry output,
   # and it also enables paging
-  Pry.config.print = proc {|output, value| Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output)}
+  #Pry.config.print = proc {|output, value| Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output)}
 
   # If you want awesome_print without automatic pagination, use the line below
   # Pry.config.print = proc { |output, value| output.puts value.ai }
@@ -50,7 +50,7 @@ default_command_set = Pry::CommandSet.new do
     end
   end
 
-  command "sql", "Send sql over AR." do |query|
+  command "sql!", "Send sql over AR." do |query|
     if ENV['RAILS_ENV'] || defined?(Rails)
       pp ActiveRecord::Base.connection.select_all(query)
     else
@@ -111,3 +111,5 @@ module CodeRay
     end
   end
 end
+
+Pry.pager = false
